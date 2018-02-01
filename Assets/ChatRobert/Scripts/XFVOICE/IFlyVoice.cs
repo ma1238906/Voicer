@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.IO;
+using UnityEngine;
 
 public class IFlyVoice
 {
@@ -128,7 +129,6 @@ public class IFlyVoice
         }
         else
         {
-            //showTip("请开始说话");
             "请开始说话".ShowAsToast(currentActivity);
         }
     }
@@ -221,9 +221,17 @@ public class IFlyVoice
         mIvw.Call<bool>("setParameter", SpeechConstant_IVW_KEEPALIVE.ToJavaString(), "1".ToJavaString());
         mIvw.Call<bool>("setParameter", SpeechConstant_IVW_IVW_MODE.ToJavaString(), "0".ToJavaString());
 
-        AndroidJavaClass Environment = new AndroidJavaClass("android.os.Environment");
-        AndroidJavaObject rootDir = Environment.CallStatic<AndroidJavaObject>("getExternalStorageDirectory").Call<AndroidJavaObject>("toString");
-        rootDir = rootDir.Call<AndroidJavaObject>("concat", "/msc/ivw/59549e41.jet".ToJavaString());//不确定是不是这个路径
-        mIvw.Call<bool>("setParameter", SpeechConstant_IV2_IVW_RES_PATH,rootDir);
+        AndroidJavaObject fo = "fo|".ToJavaString();
+        AndroidJavaObject paramStr = "/sdcard/msc/ivw/59549e41.jet".ToJavaString();
+        AndroidJavaObject verticalSymbol = "|".ToJavaString();
+        AndroidJavaObject zere = "0".ToJavaString();
+        AndroidJavaObject end = "58560".ToJavaString();
+        AndroidJavaObject rootDir = fo.Call<AndroidJavaObject>("concat", paramStr);
+        rootDir.Call<AndroidJavaObject>("concat", verticalSymbol);
+        rootDir.Call<AndroidJavaObject>("concat", zere);
+        rootDir.Call<AndroidJavaObject>("concat", verticalSymbol);
+        rootDir.Call<AndroidJavaObject>("concat", end);
+
+        mIvw.Call<bool>("setParameter", SpeechConstant_IV2_IVW_RES_PATH.ToJavaString(), rootDir);
     }
 }
