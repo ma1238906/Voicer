@@ -4,19 +4,16 @@ using UnityEngine.UI;
 
 public class ChatBehaviour : MonoBehaviour
 {
-    public Button SpeakButton;
     public Text AnswerText;
     public AnimationController animCon;
+    public static ChatBehaviour Instance;
 
     void Start()
     {
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
-        SpeakButton.onClick.AddListener(() =>
-        {
-            IFlyVoice.startRecognize();
-        });
+        Instance = this;
         XfRecognizerListener.OngetResultStr += OnGetVoiceResult;
-        IFlyVoice.initIFlyVoice();
+//        IFlyVoice.initIFlyVoice();
     }
 
     void OnDisable()

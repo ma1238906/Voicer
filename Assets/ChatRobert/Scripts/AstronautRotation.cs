@@ -11,7 +11,7 @@ public class AstronautRotation : MonoBehaviour
     private float zSpeed;
     //鼠标沿水平方向拖拽的增量
     private float X;
-    //鼠标沿竖直方向拖拽的增量     
+    //鼠标沿竖直方向拖拽的增量
     //private float Y;
     //鼠标移动的距离
     private float mXY;
