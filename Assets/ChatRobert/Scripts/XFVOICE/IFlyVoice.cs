@@ -216,7 +216,7 @@ public class IFlyVoice
     private static void setIvwParam()
     {
         mIvw.Call<bool>("setParameter",SpeechConstant_PARAMS,null);
-        mIvw.Call<bool>("setParameter",SpeechConstant_IVW_THRESHOLD.ToJavaString(),"0:10".ToJavaString());
+        mIvw.Call<bool>("setParameter",SpeechConstant_IVW_THRESHOLD.ToJavaString(),"0:0".ToJavaString());
         mIvw.Call<bool>("setParameter", SpeechConstant_IVW_SST.ToJavaString(), "wakeup".ToJavaString());
         mIvw.Call<bool>("setParameter", SpeechConstant_IVW_KEEPALIVE.ToJavaString(), "1".ToJavaString());
         mIvw.Call<bool>("setParameter", SpeechConstant_IVW_IVW_MODE.ToJavaString(), "0".ToJavaString());

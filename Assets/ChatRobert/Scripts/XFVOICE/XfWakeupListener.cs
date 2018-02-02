@@ -13,7 +13,6 @@ public class XfWakeupListener : AndroidJavaProxy
 
     public void onResult(AndroidJavaObject result)
     {
-        "wakeup".ShowAsToast();
         if (null != result)
         {
             try
@@ -23,27 +22,20 @@ public class XfWakeupListener : AndroidJavaProxy
                 string tempStr = System.Text.Encoding.Default.GetString(resultByte);
                 WakeupResult wakeupResult = JsonUtility.FromJson<WakeupResult>(tempStr);
                 int score = int.Parse(wakeupResult.score);
-                if (score<40)
+                int ran = UnityEngine.Random.Range(0, 3);
+                switch (ran)
                 {
-                    "你说话要清楚啊！".Speak();
+                    case 0:
+                        "你好".Speak(SettingPanel.voicer);
+                        break;
+                    case 1:
+                        "在这呢".Speak(SettingPanel.voicer);
+                        break;
+                    case 2:
+                        "跑得快".Speak(SettingPanel.voicer);
+                        break;
                 }
-                else
-                {
-                    int ran = UnityEngine.Random.Range(0, 3);
-                    switch (ran)
-                    {
-                        case 0:
-                            "你好".Speak(SettingPanel.voicer);
-                            break;
-                        case 1:
-                            "在这呢".Speak(SettingPanel.voicer);
-                            break;
-                        case 2:
-                            "跑得快".Speak(SettingPanel.voicer);
-                            break;
-                    }
-                    ChatBehaviour.Instance.StartCoroutine(Rec());
-                }
+                ChatBehaviour.Instance.StartCoroutine(Rec());
             }
             catch (Exception e)
             {
