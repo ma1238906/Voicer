@@ -222,7 +222,7 @@ public class IFlyVoice
         mIvw.Call<bool>("setParameter", SpeechConstant_IVW_IVW_MODE.ToJavaString(), "0".ToJavaString());
 
         AndroidJavaObject fo = "fo|".ToJavaString();
-        AndroidJavaObject paramStr = "/sdcard/msc/ivw/59549e41.jet".ToJavaString();
+        AndroidJavaObject paramStr = "/sdcard/Android/data/com.spaced.xf/files/59549e41.jet".ToJavaString();
         AndroidJavaObject verticalSymbol = "|".ToJavaString();
         AndroidJavaObject zere = "0".ToJavaString();
         AndroidJavaObject end = "58560".ToJavaString();
